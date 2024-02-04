@@ -1,6 +1,0 @@
-Import('env')
-
-env.Append(CPPPATH=['#src/include'])
-
-#compile source into executable
-program = env.Program(target='../build/game', source=Glob('*.cpp'))

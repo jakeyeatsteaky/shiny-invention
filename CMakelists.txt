@@ -1,0 +1,28 @@
+cmake_minimum_required(VERSION 3.10)
+
+# Project name
+project(2D_Game)
+
+# Set C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+set(SDL2_PATH "C:/Program Files/SDL2/include")
+
+# Find the SDL2 library
+find_package(SDL2 REQUIRED)
+find_package(OpenGL REQUIRED) 
+
+# Include directories for SDL2
+include_directories(${SDL2_PATH} include ${OPENGL_INCLUDE_DIR})
+
+link_directories("C:/Program Files/SDL2//lib/x64")
+
+file(GLOB SOURCES "src/*.cpp")
+file(GLOB HEADERS "include/*.hpp")
+
+# Define the executable
+add_executable(game main.cpp ${SOURCES} ${HEADERS})
+
+# Link SDL2 with the executable
+target_link_libraries(game SDL2main SDL2 ${OPENGL_LIBRARIES})
